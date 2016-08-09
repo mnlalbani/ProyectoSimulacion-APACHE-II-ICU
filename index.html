@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>APACHE II</title>
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.bundle.min.js"></script>-->
+	<script src="js/Chart.min.js"></script>
+	<script src="js/main.js"></script>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div class="nav"><p>SIMULADOR APACHE II</p></div>
+		<div id="panel_variables">
+		<h3>Variables:</h3>
+		<br>
+		Temperatura:
+		<select id="temperatura">
+			<option value="4" media="29.9"><=29.9 (4 puntos)</option>
+			<option value="3" media="30.5">30 a 31.9 (3 puntos)</option>
+			<option value="2" media="32.5">32 a 33.9 (2 puntos)</option>
+			<option value="1" media="34.5">34 a 35.9 (1 puntos)</option>
+			<option value="0" selected="selected" media="37">36 a 38.4 (0 puntos)</option>
+			<option value="1" media="38.7">38.5 a 38.9 (1 puntos)</option>
+			<option value="3" media="39.5">39 a 40.9 (3 puntos)</option>
+			<option value="4" media="40">>=40 (4 puntos)</option>
+		</select>
+		<br>
+		Presion arterial media:
+		<select id="pam">
+			<option value="4" media="49"><=49 (4 puntos)</option>
+			<option value="2" media="59">50 a 69 (2 puntos)</option>
+			<option value="0" selected="selected" media="85">70 a 109 (0 puntos)</option>
+			<option value="2" media="120">110 a 129 (2 puntos)</option>
+			<option value="3" media="145">130 a 159 (3 puntos)</option>
+			<option value="4" media="160">>= 160 (4 puntos)</option>
+		</select>
+		<br>
+		Frecuencia cardiaca:
+		<select id="fc">
+			<option value="4"><=39 (4 puntos)</option>
+			<option value="3">40 a 54 (3 puntos)</option>
+			<option value="2">55 a 69 (2 puntos)</option>
+			<option value="0" selected="selected">70 a 109 (0 puntos)</option>
+			<option value="2">110 a 139 (2 puntos)</option>
+			<option value="3">140 a 179 (3 puntos)</option>
+			<option value="4">>= 180 (4 puntos)</option>
+		</select>
+		<br>
+		Frecuencia respiratoria:
+		<select id="fr">
+			<option value="4"><=5 (4 puntos)</option>
+			<option value="3">6 a 9 (3 puntos)</option>
+			<option value="1">10 a 11 (1 puntos)</option>
+			<option value="0" selected="selected">12 a 24 (0 puntos)</option>
+			<option value="1">25 a 34 (1 puntos)</option>
+			<option value="2">35 a 49 (2 puntos)</option>
+			<option value="4">>= 50 (4 puntos)</option>
+		</select>
+		<br>
+		Oxigenacion:
+		<select id="o2">
+			<option value="4"><=55 (4 puntos)</option>
+			<option value="3">55 a 60 (3 puntos)</option>
+			<option value="1">61 a 70 (1 puntos)</option>
+			<option value="0" selected="selected">71 a 200 (0 puntos)</option>
+			<option value="2">201 a 349 (2 puntos)</option>
+			<option value="3">350 a 499 (3 puntos)</option>
+			<option value="4">>=500 (4 puntos)</option>
+		</select>
+		<br>
+		Ph arterial:
+		<select id="ph">
+			<option value="4"> < 7,15  (4 puntos)</option>
+			<option value="3">7.15 a 7.24 (3 puntos)</option>
+			<option value="2">7.25 a 7.32 (2 puntos)</option>
+			<option value="0" selected="selected">7.33 a 7.49 (0 puntos)</option>
+			<option value="1">7.5 a 7.59 (1 puntos)</option>
+			<option value="3">7.6 a 7.69 (3 puntos)</option>
+			<option value="4">>=7.7 (4 puntos)</option>
+		</select>
+		<br>
+		Na + Sérico:
+		<select id="na">
+			<option value="4"><=110 (4 puntos)</option>
+			<option value="3">110 a 119 (3 puntos)</option>
+			<option value="2">120 a 129 (2 puntos)</option>
+			<option value="0" selected="selected">120 a 149 (0 puntos)</option>
+			<option value="1">150 a 154 (1 puntos)</option>
+			<option value="2">155 a 159 (2 puntos)</option>
+			<option value="3">160 a 179 (3 puntos)</option>
+			<option value="4">>= 180 (4 puntos)</option>
+		</select>
+		<br>
+		K + Sérico:
+		<select id="k_serico">
+			<option value="4" media="2.5">< 2.5 (4 puntos)</option>
+			<option value="2" media="2.7">2.5 a 2.9 (2 puntos)</option>
+			<option value="1" media="3.2">3 a 3.4 (1 puntos)</option>
+			<option value="0" selected="selected" media="4">3.5 a 5.4 (0 puntos)</option>
+			<option value="1" media="5.7">5.5 a 5.9 (1 puntos)</option>
+			<option value="3" media="6.5">6 a 6.9 (3 puntos)</option>
+			<option value="4" media="7">>=7 (4 puntos)</option>
+		</select>
+		<br>
+		Creatinina:
+		<select id="cr">
+			<option value="2">< 0.5 (2 puntos)</option>
+			<option value="0" selected="selected">0.6 a 1.4 (0 puntos)</option>
+			<option value="2">1.5 a 1.9 (2 puntos)</option>
+			<option value="3">2 a 3.4 (3 puntos)</option>
+			<option value="4">>=3.5 (4 puntos)</option>
+		</select>
+		<br>
+		Hermatocrito:
+		<select id="hcto">
+			<option value="4"> < 20 (4 puntos)</option>
+			<option value="2">20 a 29.9 (2 puntos)</option>
+			<option value="0" selected="selected">30 a 45.9 (0 puntos)</option>
+			<option value="1">46 a 49.9 (1 puntos)</option>
+			<option value="2">50 a 59.9 (2 puntos)</option>
+			<option value="4">>= 60 (4 puntos)</option>
+		</select>
+		<br>
+		Leucocitos:
+		<select id="leuc">
+			<option value="4"> < 1 (4 puntos)</option>
+			<option value="2">1 a 2.9 (2 puntos)</option>
+			<option value="0" selected="selected">3 a 14.9 (0 puntos)</option>
+			<option value="1">15 a 19.9 (1 puntos)</option>
+			<option value="2">20 a 39.9 (2 puntos)</option>
+			<option value="4">>= 40 (4 puntos)</option>
+		</select>
+		<br>
+		Glasgow:
+			<select id="glasgow">
+				<option value="14">1</option>
+				<option value="13">2</option>
+				<option value="12">3</option>
+				<option value="11">4</option>
+				<option value="10">5</option>
+				<option value="9">6</option>
+				<option value="8">7</option>
+				<option value="7">8</option>
+				<option value="6">9</option>
+				<option value="5">10</option>
+				<option value="4">11</option>
+				<option value="3">12</option>
+				<option value="2">13</option>
+				<option value="1">14</option>
+				<option value="0" selected="selected">15</option>
+			</select>
+		<br>
+		Edad:
+		<select id="edad">
+			<option value="0" selected="selected" value1="44"><=44 (0 puntos)</option>
+			<option value="2" value1="54">>=45 y <= 54 (2 puntos)</option>
+			<option value="3" value1="64">>= 55 y <=64 (3 puntos)</option>
+			<option value="5" value1="74">>=65 y <= 74 (5 puntos)</option>
+			<option value="6" value1="75"> >= 75 (6 puntos)</option>
+		</select>
+		<br>
+		<br>
+		Número de Días a Simular:
+		<input type="text" id="dias">
+		<br>
+		<br>
+		<input type="button" id="calcular" value="Simular">
+		</div>
+		<div id="panel_score">
+			<h3>Score diario:</h3>
+			<br>
+			<div id="apache_score"></div>	
+		</div>
+		<div id="panel_grafica">
+			<h3>Gráfica</h3>
+			<br>
+			<canvas id="myChart" width="500" height="300"></canvas>
+		</div>
+		<div id="panel_inicial">
+			<h3>Score Inicial: </h3>
+			<div class="initScore"></div>
+		</div>
+		<div id="panel_mortalidad">
+			<h3>Mortalidad Diaria: </h3>
+				<div id="mortalidad_score"></div>
+		</div>
+		<div id="panel_tabla">
+			<h3>Tabla de Resultados</h3>
+			<br>
+				<div id="table">
+					<table class="myTable">
+						<tr>
+							<th class="nombreColumna">Día</th>
+							<th class="nombreColumna">Temperatura</th>
+							<th class="nombreColumna">PAM</th>
+							<th class="nombreColumna">FC</th>
+							<th class="nombreColumna">FR</th>
+							<th class="nombreColumna">02</th>
+							<th class="nombreColumna">PH</th>
+							<th class="nombreColumna">NA</th>
+							<th class="nombreColumna">K</th>
+							<th class="nombreColumna">CR</th>
+							<th class="nombreColumna">HCTO</th>
+							<th class="nombreColumna">LEUC</th>
+							<th class="nombreColumna">Glasgow</th>
+							<th class="nombreColumna">APACHE</th>
+							<th class="nombreColumna">Mortalidad</th>
+						</tr>
+					</table>
+				</div>
+		</div>
+		<div id="panel_leyenda">
+		<h3>Leyenda: </h3>
+		<br>
+			<table class="tablaLeyenda">
+				<tr>
+					<th class="nombreColumna">SCORE</th>
+					<th class="nombreColumna">Mortalidad Aproximada %</th>
+				</tr>
+				<tr>
+					<td>0-4</td>
+					<td>4%</td>
+				</tr>
+				<tr>
+					<td>5-9</td>
+					<td>8%</td>
+				</tr>
+				<tr>
+					<td>10-14</td>
+					<td>15%</td>
+				</tr>
+				<tr>
+					<td>15-19</td>
+					<td>25%</td>
+				</tr>
+				<tr>
+					<td>20-24</td>
+					<td>40%</td>
+				</tr>
+				<tr>
+					<td>25-29</td>
+					<td>55%</td>
+				</tr>
+				<tr>
+					<td>30-34</td>
+					<td>75%</td>
+				</tr>
+				<tr>
+					<td>>34</td>
+					<td>85%</td>
+				</tr>
+
+			</table>
+			<br>
+			<p>APACHE SCORE = (Variables + P. Edad) + Insuficiencia Crónica</p>
+			<br>
+			<table class="tablaLeyenda">
+				<tr>
+					<th class="nombreColumna">Insuficiencia Crónica</th>
+					<th class="nombreColumna">+Punto</th>
+				</tr>
+				<tr>
+					<td>No</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>Sí (Cirugía Electiva)</td>
+					<td>+2</td>
+				</tr>
+				<tr>
+					<td>Sí (No Post-Operatorio)</td>
+					<td>+5</td>
+				</tr>
+				<tr>
+					<td>Sí (Cirugía Emergencia)</td>
+					<td>+5</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>
